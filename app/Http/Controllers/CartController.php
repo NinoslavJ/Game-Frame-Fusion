@@ -59,7 +59,7 @@ class CartController extends Controller
             $user->items()->detach($id); // Remove the item from the user's cart
         }
 
-        return redirect()->route('cart')->with('success', 'Item removed from cart.');
+        return redirect()->route('cart')->with('success', 'Item removed from cart.');//
     }
 }
 
