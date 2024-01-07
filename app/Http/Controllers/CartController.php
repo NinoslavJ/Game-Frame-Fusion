@@ -46,11 +46,17 @@ class CartController extends Controller
         // If the user is not logged in or there are no items, return an empty cart view
         return view('cart', ['cartItems' => []]);
     }
-    public function checkout()
+
+    public function checkout(Request $request)
     {
-        // Logic for checkout process
-        // Redirect or display the checkout view
+        if ($request->user()) {
+            $cartItems = $request->user()->items;
+            $total = $cartItems->sum('price');
+            return view('checkout', compact('cartItems', 'total'));
+        }
+        return redirect('login');
     }
+
     public function removeItem($id)
     {
         $user = Auth::user();

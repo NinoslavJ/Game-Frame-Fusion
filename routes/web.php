@@ -3,6 +3,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CustomAuthController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\OrderController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -32,3 +33,6 @@ Route::delete('/remove-item/{id}', [CartController::class, 'removeItem'])->name(
 //SEARCH ROUTE
 // Define the route for the search functionality
 Route::get('/search', [ItemController::class, 'search'])->name('search');
+
+// ORDER ROUTES
+Route::post('/order/store', [OrderController::class, 'store'])->name('order.store');

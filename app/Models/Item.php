@@ -16,5 +16,14 @@ class Item extends Model
         return $this->belongsToMany(User::class, 'cart', 'item_id', 'user_id')
             ->withPivot('quantity');
     }
+    public function product()
+    {
+        return $this->belongsTo(Product::class);
+    }
+
+    public function order()
+    {
+        return $this->belongsTo(Order::class);
+    }
 
 }
