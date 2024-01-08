@@ -40,11 +40,11 @@ class CartController extends Controller
             // You might also want to eager load any relationships if needed:
             // $user->load('items');
 
-            return view('cart', ['cartItems' => $cartItems]);
+            return view('basket.cart', ['cartItems' => $cartItems]);
         }
 
         // If the user is not logged in or there are no items, return an empty cart view
-        return view('cart', ['cartItems' => []]);
+        return view('basket.cart', ['cartItems' => []]);
     }
 
     public function checkout(Request $request)
@@ -52,7 +52,7 @@ class CartController extends Controller
         if ($request->user()) {
             $cartItems = $request->user()->items;
             $total = $cartItems->sum('price');
-            return view('checkout', compact('cartItems', 'total'));
+            return view('basket.checkout', compact('cartItems', 'total'));
         }
         return redirect('login');
     }
@@ -65,7 +65,7 @@ class CartController extends Controller
             $user->items()->detach($id); // Remove the item from the user's cart
         }
 
-        return redirect()->route('cart')->with('success', 'Item removed from cart.');
+        return redirect()->route('basket.cart')->with('success', 'Item removed from cart.');
     }
 }
 

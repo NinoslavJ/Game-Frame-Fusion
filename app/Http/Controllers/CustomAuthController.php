@@ -100,6 +100,7 @@ class CustomAuthController extends Controller
 
         return redirect()->route('login')->with('error', 'Invalid or expired verification link.');
     }
+    
     public function signOut()
     {
         Session::flush();

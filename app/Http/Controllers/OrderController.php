@@ -38,6 +38,7 @@ class OrderController extends Controller
         // Redirect to the dashboard after the order is successfully created
         return redirect()->route('dashboard')->with('success', 'Order placed successfully');
     }
+    
     public function userOrders()
     {
         // Get the authenticated user's orders

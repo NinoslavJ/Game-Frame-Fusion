@@ -33,17 +33,16 @@ class ItemController extends Controller
     }
 
     public function search(Request $request)
-{
-    $query = $request->input('query');
+    {
+        $query = $request->input('query');
 
-    // Perform the search based on the query
-    $searchResults = Item::where('name', 'like', '%'.$query.'%')
-                        // ->orWhere('description', 'like', '%'.$query.'%')
-                         ->get();
+        // Perform the search based on the query
+        $searchResults = Item::where('name', 'like', '%'.$query.'%')
+                            // ->orWhere('description', 'like', '%'.$query.'%')
+                            ->get();
 
-    return view('search_results', ['searchResults' => $searchResults, 'query' => $query]);
-}
+        return view('search_results', ['searchResults' => $searchResults, 'query' => $query]);
+    }
 
-   
     
 }
