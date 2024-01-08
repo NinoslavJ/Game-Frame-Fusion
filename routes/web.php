@@ -10,9 +10,14 @@ use App\Http\Controllers\OrderController;
 |--------------------------------------------------------------------------
 */
 
+// Dashboard Route (with email verification middleware)
 Route::get('dashboard', [ItemController::class, 'index'])
     ->name('dashboard')
-    ->middleware('auth.dashboard'); // Add the 'auth.dashboard' middleware here
+    ->middleware(['auth', 'verified']);
+    
+//EMAIL VERIFICATION
+Auth::routes(['verify' => true]);
+Route::get('/verify-email/{token}', [CustomAuthController::class, 'verifyEmail'])->name('verify.email');
 
 
 //LOGIN/REGISTER ROUTES
@@ -36,3 +41,5 @@ Route::get('/search', [ItemController::class, 'search'])->name('search');
 
 // ORDER ROUTES
 Route::post('/order/store', [OrderController::class, 'store'])->name('order.store');
+Route::get('/user/orders', [OrderController::class, 'userOrders'])->name('user.orders');
+

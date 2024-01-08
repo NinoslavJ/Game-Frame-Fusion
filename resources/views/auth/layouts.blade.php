@@ -53,6 +53,13 @@
                             <button class="btn btn-outline-success" type="submit">Search</button>
                         </form>
                     </li>
+                    <li>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <a href="{{ route('user.orders') }}" class="btn btn-primary">Check My Orders</a>
+                            </div>
+                        </div>
+                    </li>
                     @endguest
                 </ul>
             </div>
