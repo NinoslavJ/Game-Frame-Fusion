@@ -39,7 +39,7 @@ class CustomAuthController extends Controller
                 return view('auth.verify_email');
             }
         }
-
+//
         return redirect("login")->withSuccess('Login details are not valid');
     }
 
